@@ -1,0 +1,173 @@
+body {
+	background: #fff;
+	font-family: helvetica, arial, sans-serif;
+}
+
+a {
+	color: #386f9d;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: arial, sans-serif;
+}
+
+h1 {
+	font-size: 32px;
+	letter-spacing: -1px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom: 3px double #000;
+}
+
+h2 {
+	font-size: 26px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+ul {
+}
+
+ul li {
+	margin-left: 30px;
+	list-style-type: square;
+}
+
+ol li {
+	margin-left: 30px;
+	list-style-type: decimal;
+}
+
+.menu {
+	background: #262626;
+	height: 40px;
+	border-bottom: 2px solid #b0b0b0;
+	color: #fff;
+	padding: 5px 0 5px 0;
+}
+
+.stage {
+	margin-top: 50px;
+}
+
+.sidebar {
+}
+
+.entry {
+	margin-bottom: 80px;
+}
+
+.entry .date-author {
+	font-size: 12px;
+}
+
+.entry .date-author .date {
+
+}
+
+.entry .date-author .author {
+
+}
+
+.entry .content {
+	margin-top: 20px;
+	font-family: 'Georgia', helvetica, arial, sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+.entry .content p {
+	margin: 10px 0 10px 0;
+}
+
+.entry .content blockquote {
+	background: #d2d2d2;
+	padding: 10px;
+	font-style: italic;
+	margin: 10px 0 10px 0;
+}
+
+.entry .content pre {
+	background: none repeat scroll 0 0 #262626;
+	border: 1px solid #fff;
+	color: #FFFFFF;
+	padding: 10px;
+	font-size: 12px;
+	margin: 10px 0 10px 0;
+}
+
+.entry .content pre em {
+	color: #8A8A8A;
+}
+
+.entry .content ul.categories {
+
+}
+
+.entry .content ul.categories li {
+	float: left;
+	padding-right: 10px;
+	margin: 0;
+	list-style-type: none;
+}
+
+.entry .content ul.categories li.description {
+	font-style: italic;
+}
+
+.categories {
+	margin-bottom: 20px;
+}
+
+.categories ul.listing li {
+	background: #bedef2;
+	border-bottom: 1px solid white;
+	margin: 0;
+	list-style-type: none;
+}
+
+.categories ul.listing li:hover {
+	background: #97c9e9;
+}
+
+.categories ul.listing li.selected {
+	background: #666666;
+}
+
+.categories ul.listing li.last {
+	border-bottom: 0;
+}
+
+.categories ul.listing li a {
+	display: block;
+	color: #2c587b;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 0 10px 10px;
+}
+
+.categories ul.listing li.selected a {
+	color: #fff;
+}
+
+.copyright {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	color: #666666;
+	text-align: center;
+	font-size: 12px;
+}
