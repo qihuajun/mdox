@@ -8,7 +8,7 @@ define('TEMPLATE_DIR', __DIR__.'/templates/', false);
 define('CSS_DIR', __DIR__.'/templates/css/', false);
 
 if ($argc != 2) {
-	mdox_output("Usage: mdox src", true);
+    mdox_output("Usage: mdox src", true);
 }
 
 $src_input = realpath($argv[1]).DIRECTORY_SEPARATOR;
@@ -18,19 +18,19 @@ $config = mdox_read_config($src_input);
 $dest_output = realpath($src_input.$config['dest_output']).DIRECTORY_SEPARATOR;
 
 if (!is_dir($src_input)) {
-	mdox_output("The src directory does not exist.", true);
+    mdox_output("The src directory does not exist.", true);
 }
 
 if (!is_readable($src_input)) {
-	mdox_output("The src directory is not readable.", true);
+    mdox_output("The src directory is not readable.", true);
 }
 
 if (!is_dir($dest_output)) {
-	mdox_output("The dest directory does not exist.", true);
+    mdox_output("The dest directory does not exist.", true);
 }
 
 if (!is_writable($dest_output)) {
-	mdox_output("The dest directory is not writable.", true);
+    mdox_output("The dest directory is not writable.", true);
 }
 
 // Get all of the files
@@ -38,26 +38,26 @@ $glob_search = $src_input.'*.md';
 $source_md_files = glob($glob_search);
 
 if (0 === count($source_md_files)) {
-	mdox_output("There are no documentation files to process.", true);
+    mdox_output("There are no documentation files to process.", true);
 }
 
 $md_files = array();
 foreach ($source_md_files as $md_file) {
-	$plain_md_file = mdox_remove_ext($md_file);
-	
-	$src_file = $md_file;
-	$base_src_file = basename($src_file);
-	$base_dest_file = basename(mdox_append_ext($plain_md_file, 'html'));
-	$dest_file = $dest_output.$base_dest_file;
-	
-	$md_files[] = array(
-		'src' => $src_file,
-		'dest' => $dest_file,
-		'base_src' => $base_src_file,
-		'base_dest' => $base_dest_file,
-		'title' => mdox_create_title_from_filename($src_file),
-		'output' => Markdown(file_get_contents($src_file))
-	);
+    $plain_md_file = mdox_remove_ext($md_file);
+
+    $src_file = $md_file;
+    $base_src_file = basename($src_file);
+    $base_dest_file = basename(mdox_append_ext($plain_md_file, 'html'));
+    $dest_file = $dest_output.$base_dest_file;
+
+    $md_files[] = array(
+        'src' => $src_file,
+        'dest' => $dest_file,
+        'base_src' => $base_src_file,
+        'base_dest' => $base_dest_file,
+        'title' => mdox_create_title_from_filename($src_file),
+        'output' => Markdown(file_get_contents($src_file))
+    );
 }
 
 // Compress all of the CSS
@@ -69,16 +69,16 @@ $html_css .= mdox_compress_css('mdox.css');
 $html_toc = null;
 $html_toc_elements = null;
 foreach ($md_files as $mdfile) {
-	$html_toc_elements .= mdox_render_template('toc-element.tpl', array('dox_url' => $mdfile['base_dest'], 'dox_title' => $mdfile['title']));
+    $html_toc_elements .= mdox_render_template('toc-element.tpl', array('dox_url' => $mdfile['base_dest'], 'dox_title' => $mdfile['title']));
 }
 
 $html_toc = mdox_render_template('toc.tpl', array('toc' => $html_toc_elements));
 
 foreach ($md_files as $mdfile) {
-	$html_dox = mdox_render_template('dox.tpl', array('toc' => $html_toc, 'dox_title' => $mdfile['title'], 'dox' => $mdfile['output']));
-	$html_dox_layout = mdox_render_template('layout.tpl', array('title' => $config['title'], 'css' => $html_css, 'body' => $html_dox));
-	
-	file_put_contents($mdfile['dest'], $html_dox_layout);
+    $html_dox = mdox_render_template('dox.tpl', array('toc' => $html_toc, 'dox_title' => $mdfile['title'], 'dox' => $mdfile['output']));
+    $html_dox_layout = mdox_render_template('layout.tpl', array('title' => $config['title'], 'css' => $html_css, 'body' => $html_dox));
+
+    file_put_contents($mdfile['dest'], $html_dox_layout);
 }
 
 mdox_output("Finished creating markdown dox.");

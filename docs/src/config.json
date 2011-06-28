@@ -1,0 +1,5 @@
+{
+	"title": "mdox - Turn Markdown Into Pretty HTML Documentation",
+	"author": "Vic Cherubini",
+	"dest_output": "../html/"
+}
