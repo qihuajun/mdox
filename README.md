@@ -16,3 +16,11 @@ Create a file named `config.json` in the directory where your documentation is s
     }
 
 The `dest_output` directory is a directory **relative** to your source directory. It must exist before you run `mdox`.
+
+Finally, run `mdox` with the source location of the Markdown files
+
+    mdox /path/to/docs/src/
+
+You can then open up the HTML files in `/path/to/docs/html/`.
+
+Enjoy nice documentation!
