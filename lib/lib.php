@@ -69,7 +69,13 @@ function mdox_read_config($src_input) {
 
 
 function mdox_output($msg, $error=false) {
-	echo($msg.PHP_EOL);
+	$output_stream = STDOUT;
+	if($error) {
+		$output_stream = STDERR;
+	}
+
+	fwrite($output_stream, $msg.PHP_EOL);
+
 	if ($error) {
 		exit(1);
 	}
